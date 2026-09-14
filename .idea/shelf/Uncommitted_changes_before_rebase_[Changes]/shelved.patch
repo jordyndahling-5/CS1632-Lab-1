@@ -1,0 +1,19 @@
+Index: src/main/java/edu/umn/d/cs1632/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.umn.d.cs1632;\r\n\r\nimport java.util.Scanner;\r\n\r\npublic class Main  {\r\n\r\n\r\n    public static void main(String[] args) {\r\n        Scanner scanner = new Scanner(System.in);\r\n\r\n        /**\r\n        System.out.print(\"Fil of data to read: \");\r\n        String fileName = scanner.nextLine();\r\n        */\r\n\r\n\r\n\r\n        MArray mArray = new MArray(\"src/data/simple.csv\");\r\n        // Put your code for queries here\r\n        System.out.println(\"Data:\");\r\n        System.out.println(mArray);\r\n\r\n        while (true) {\r\n            System.out.println(\"Query? \");\r\n            String query = scanner.nextLine();\r\n\r\n            if (query.equals(\"Q\")) {\r\n                break;\r\n            }\r\n            String[] parts = query.split(\" \");\r\n\r\n            if (parts[0].equals(\"V\")) {\r\n                int col = Integer.parseInt(parts[1]);\r\n                int rowStart = Integer.parseInt(parts[2]);\r\n                int rowEnd = Integer.parseInt(parts[3]);\r\n\r\n                String type = mArray.getType(rowStart, col);\r\n                boolean sameType = true;\r\n\r\n                for (int row = rowStart; row <= rowEnd; row++) {\r\n                    if (!mArray.getType(row, col).equals(type)) {\r\n                        sameType = false;\r\n                        break;\r\n                    }\r\n                }\r\n                if (sameType) {\r\n                    System.out.print(type);\r\n                } else {\r\n                    System.out.println(\"Multi\");\r\n                }\r\n\r\n\r\n            }\r\n\r\n        }\r\n\r\n        scanner.close();\r\n\r\n\r\n\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/edu/umn/d/cs1632/Main.java b/src/main/java/edu/umn/d/cs1632/Main.java
+--- a/src/main/java/edu/umn/d/cs1632/Main.java	(revision 56675d509d8a005eedc206a87355a1716a1027dc)
++++ b/src/main/java/edu/umn/d/cs1632/Main.java	(date 1789419749573)
+@@ -13,7 +13,7 @@
+         String fileName = scanner.nextLine();
+         */
+ 
+-
++ 
+ 
+         MArray mArray = new MArray("src/data/simple.csv");
+         // Put your code for queries here
