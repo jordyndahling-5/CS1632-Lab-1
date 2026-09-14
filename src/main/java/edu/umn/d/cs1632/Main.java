@@ -13,7 +13,7 @@ public class Main  {
         String fileName = scanner.nextLine();
         */
 
-
+ 
 
         MArray mArray = new MArray("src/data/simple.csv");
         // Put your code for queries here
