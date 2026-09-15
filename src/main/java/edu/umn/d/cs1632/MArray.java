@@ -20,18 +20,23 @@ class MArray {
             CSVReader csvReader = new CSVReader(filereader);
             List<String[]> allData = csvReader.readAll();
 
+            data = new Value[allData.size()][allData.get(0).length];
+
             Value value;
 
 
-            for (String[] row : allData) {
-                for (String cell : row) {
+            for (int r = 0; r < allData.size(); r++) {
+                String[] row = allData.get(r);
+
+                for (int c = 0; c < row.length; c++) {
+                    String cell = row[c];
+
                     if (cell == null) {
                         System.out.print(cell + "(null)" + " ");
                         continue;
                     }
                     try {
                         value = new IntValue(cell);
-
                     } catch (NumberFormatException e) {
                         try {
                             value = new DoubleValue(cell);
@@ -39,16 +44,14 @@ class MArray {
                             value = new StringValue(cell);
                         }
                     }
+                    data[r][c] = value;
 
-                    String type = null;
+
                     if (value instanceof IntValue) {
-                        type = "Integer";
                         System.out.print(cell + "(I) ");
                     } else if (value instanceof DoubleValue) {
-                        type = "Double";
                         System.out.print(cell + "(D) ");
                     } else {
-                        type = "String";
                         System.out.print(cell + "(S) ");
                     }
                 }
@@ -70,15 +73,20 @@ class MArray {
     public Value[][] data;
 
 
+
     public String getType(int row, int col) {
+
         Value value = data[row][col];
 
+
         if (value instanceof IntValue) {
-            return "Integer";
+            return "Int";
         } else if (value instanceof DoubleValue) {
             return "Double";
         } else {
             return "String";
         }
+
     }
+
 }
